@@ -52,9 +52,22 @@ def guess():
         </body>
         </html>
         """
+    wining_page = """
+    <h1>Nice I won your number was {guess}</h1>
+    """
     if request.method == "GET":
         return main_page.format(0, 1000)
     else:
+        min_number = int(request.form.get("min"))
+        max_number = int(request.form.get("max"))
+        choice = request.form.get("choice")
+        guess = int(request.form.get("guess", 500))
+        if choice == "big":
+            max_number = guess
+        elif choice == "small":
+            min_number = guess
+        elif choice == "win":
+            return wining_page.format(guess=guess)
         return gues
 
 if __name__ == "__main__":

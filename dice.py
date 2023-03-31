@@ -9,19 +9,29 @@ def dice(dice):
             split_dice = dice.split("+")
             throw = split_dice[0]
             modif = split_dice[1]
-        if list_dice[i] == modifier[1]:
+        elif list_dice[i] == modifier[1]:
             split_dice = dice.split("-")
             throw = split_dice[0]
             modif = split_dice[1]
+        else:
+            no_modif = True
+    for i in range(len(dice)):
+        if dice[i] == "D":
+            position_of_D = i
+    if dice[:position_of_D]:
+        numbers_of_throw = int(dice[:position_of_D])
 
-    # if len(dice) == 5:
-    #     if dice[1:3] not in posible_dices:
-    #         return "In our game we don't have this dice"
-    #     elif dice[3] not in modifier:
-    #         return "You can't use this modifier"
-    #     try:
-    #         int(dice[0])
-    #     except Exception:
-    #         return "Number of throws need to ba a number"
+    if no_modif == True:
+        if dice[position_of_D:] not in posible_dices:
+            return "In our game we don't have this dice"
+        else:
+            thrown_number = 0
+            if dice[:position_of_D]:
+                for i in range(numbers_of_throw):
+                    thrown_number += random.randint(1, int(dice[position_of_D+1:]))
+            else:
+                thrown_number += random.randint(1, int(dice[position_of_D+1:]))
+            return thrown_number
 
-print(dice("2D10+10"))
+
+print(dice("D10"))

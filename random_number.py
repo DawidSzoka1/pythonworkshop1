@@ -68,7 +68,9 @@ def guess():
             min_number = guess
         elif choice == "win":
             return wining_page.format(guess=guess)
-        return gues
+
+        guess = (max_number - min_number) // 2 + min_number
+        return gues.format(guess=guess, min=min_number, max=max_number)
 
 if __name__ == "__main__":
     app.run(debug=True)

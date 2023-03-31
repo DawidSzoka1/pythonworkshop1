@@ -7,6 +7,11 @@ def dice(dice):
     thrown_number = 0
     numbers_of_throw = 1
     no_modif = True
+    try:
+        int(dice)
+        return "your dice must be a string"
+    except Exception:
+        pass
     for i in range(len(dice)):  # checking if dice have modifierf if yes then spliting dice
         if dice[i] == modifier[0]:
             split_dice = dice.split("+")
@@ -70,7 +75,7 @@ Throwing dice type {throw[position_of_D:]},
         return strin
 
 
-print(dice("32D32*10"))
+print(dice(54))
 print(dice("D10"))
 print(dice("3D10"))
 print(dice("D100-10"))

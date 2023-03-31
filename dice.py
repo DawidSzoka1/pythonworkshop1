@@ -20,12 +20,15 @@ def dice(dice):
             modif = split_dice[1]
             modif_type = "-"
             no_modif = False
+    try:
+        for i in range(len(dice)):  # posiotion of D in string
+            if dice[i] == "D":
+                position_of_D = i
 
-    for i in range(len(dice)):  # posiotion of D in string
-        if dice[i] == "D":
-            position_of_D = i
-    if dice[:position_of_D]:  # checking if dice is throw multiple times
-        numbers_of_throw = int(dice[:position_of_D])
+        if dice[:position_of_D]:  # checking if dice is throw multiple times
+            numbers_of_throw = int(dice[:position_of_D])
+    except Exception:
+        return "There is no D in your dice"
 
     if no_modif != False:
         if dice[position_of_D:] not in posible_dices:
@@ -42,6 +45,9 @@ Throwing dice type {dice[position_of_D:]},
             """
             return strin
     else:
+        if throw[position_of_D:] not in posible_dices:
+            return "In our game we don't have this dice"
+
         if dice[:position_of_D]:
             for i in range(numbers_of_throw):
                 thrown_number += random.randint(1, int(throw[position_of_D + 1:]))
@@ -49,7 +55,7 @@ Throwing dice type {dice[position_of_D:]},
                 thrown_number += int(modif)
             else:
                 thrown_number -= int(modif)
-                            
+
         else:
 
             if modif_type == "+":
@@ -60,11 +66,11 @@ Throwing dice type {dice[position_of_D:]},
                 thrown_number -= int(modif)
         strin = f"""
 Throwing dice type {throw[position_of_D:]}, 
-{numbers_of_throw} times with modifier {modif_type+modif} you got: {thrown_number}"""
+{numbers_of_throw} times with modifier {modif_type + modif} you got: {thrown_number}"""
         return strin
 
 
-print(dice("2D10+10"))
+print(dice("32D32*10"))
 print(dice("D10"))
 print(dice("3D10"))
 print(dice("D100-10"))

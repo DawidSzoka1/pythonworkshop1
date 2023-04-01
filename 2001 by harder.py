@@ -1,6 +1,6 @@
 import random
 
-first_player = 0
+player = 0
 computer = 0
 print("available dices: D3, D4, D6, D8, D10, D12, D20, D100")
 
@@ -33,10 +33,11 @@ while True:
             print("one of the dices wasn't in set")
             first_dice = input("Please choose dice from set: ")
             second_dice = input("Please choose dice from set: ")
-
+    check_player = 0
+    check_player += random.randint(1, int(first_dice[1:]))
+    check_player += random.randint(1, int(second_dice[1:]))
     computer_dicess = computer_dices()
     check_computer = 0
-    check_player = 0
     check_computer += random.randint(1, int(computer_dicess[0][1:]))
     check_computer += random.randint(1, int(computer_dicess[1][1:]))
     if check_computer == 7:
@@ -45,3 +46,19 @@ while True:
         computer = computer * 11
     else:
         computer += check_computer
+    if check_player == 7:
+        player = player // 7
+    elif check_player == 11:
+        player = player * 11
+    else:
+        player += player
+    print(f"first player have {player} points")
+    print("-------------------")
+    print(f"second player have {computer} points")
+    print("-------------------")
+    if player >= 2001:
+        print("first player won")
+        break
+    elif computer >= 2001:
+        print("second player won")
+        break

@@ -26,6 +26,14 @@ def check_dice(dice1, dice2):
 while True:
     first_dice = input("Please choose dice from set: ")
     second_dice = input("Please choose dice from set: ")
+    while True:
+        if check_dice(first_dice, second_dice):
+            break
+        elif check_dice(first_dice, second_dice) == False:
+            print("one of the dices wasn't in set")
+            first_dice = input("Please choose dice from set: ")
+            second_dice = input("Please choose dice from set: ")
+
     computer_dicess = computer_dices()
     check_computer = 0
     check_player = 0

@@ -10,3 +10,4 @@ game called dice roll a dice with modifier or not, you have a couple option to c
 2001 is a game about rolling two dices until one of the players get to 2001 points 
 -----------------------------------
 2001 by harder is tha same game but this time you can choose what dices are you rolling 
+-----------------------------------

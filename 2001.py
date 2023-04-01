@@ -5,7 +5,9 @@ second_player = 0
 
 
 while True:
+
     check1 = 0
+    print(check1)
     check2 = 0
     for i in range(2):
         check1 += random.randint(1, 6)
@@ -17,7 +19,6 @@ while True:
         first_player = first_player * 11
     else:
         first_player += check1
-    check2 = random.randint(1, 6)
     if check2 == 7:
         second_player = second_player // 7
     elif check2 == 11:
